@@ -10,7 +10,7 @@ export class YoutubeService {
   private request;
 
   constructor(private windowRef: WindowRefService) {
-    this.windowRef.nativeWindow.gapi_onload = this.onLoadGapi();
+    this.onLoadGapi();
   }
 
   onLoadGapi() {
