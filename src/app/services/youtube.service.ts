@@ -8,6 +8,7 @@ export class YoutubeService {
   private gapi: any;
   private oClient: any;
   private request;
+  public isEnable: boolean = false;
 
   constructor(private windowRef: WindowRefService) {
     this.onLoadGapi();
@@ -22,8 +23,9 @@ export class YoutubeService {
     this.oClient = this.gapi.client;
     this.oClient.setApiKey(YoutubeService.APPKEY);
 
-    this.oClient.load("youtube", "v3", () => {
+    let youtube = this.oClient.load("youtube", "v3", () => {
       this.request = this.oClient.youtube.search.list;
+      this.isEnable = true;
     });
   }
 

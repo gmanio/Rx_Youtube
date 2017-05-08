@@ -6,15 +6,16 @@ export const slideInOutAnimation =
   trigger('slideInOutAnimation', [
 
     // end state styles for route container (host)
-    // state('*', style({
-    //   // the view covers the whole screen with a semi tranparent background
-    //   position: 'relative',
-    //   height: '100%',
-    //   top: 0,
-    //   left: 0,
-    //   right: 0,
-    //   bottom: 0
-    // })),
+    state('*', style({
+      // the view covers the whole screen with a semi tranparent background
+      position: 'absolute',
+      display: 'block',
+      height: '100%',
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0
+    })),
 
     // route 'enter' transition
     transition(':enter', [

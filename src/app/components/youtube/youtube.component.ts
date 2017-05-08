@@ -1,15 +1,14 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, AfterContentInit } from '@angular/core';
 import { YoutubeService } from "../../services/youtube.service";
 import { slideInOutAnimation } from "../animations/slide.animation";
 import { Router } from "@angular/router";
+import { Observable } from "rxjs";
 
 @Component({
   selector: 'app-youtube',
   templateUrl: './youtube.component.html',
   styleUrls: ['./youtube.component.css'],
-  // make slide in/out animation available to this component
   animations: [slideInOutAnimation],
-  // attach the slide in/out animation to the host (root) element of this component
   host: { '[@slideInOutAnimation]': '' }
 })
 export class YoutubeComponent {
@@ -22,7 +21,14 @@ export class YoutubeComponent {
               private router: Router) {
   }
 
-  onLoadVideos() {
-    debugger;
+  getVideo() {
+    if ( this.youtube.isEnable ) {
+      Observable.fromPromise(this.youtube.getVideos())
+        .subscribe(this.onLoadVideo);
+    }
+  }
+
+  onLoadVideo() {
+
   }
 }

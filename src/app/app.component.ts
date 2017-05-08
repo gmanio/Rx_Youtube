@@ -8,7 +8,6 @@ import { YoutubeService } from "./services/youtube.service";
 })
 
 export class AppComponent implements AfterViewInit, AfterContentInit {
-
   ngAfterViewInit(): void {
     console.log('AfterViewInit');
   }
@@ -17,7 +16,7 @@ export class AppComponent implements AfterViewInit, AfterContentInit {
     console.log('AfterContentInit');
   }
 
-  constructor(private youtube: YoutubeService) {
+  constructor() {
     this.printDevLogo()
   }
 
