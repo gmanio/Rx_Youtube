@@ -1,3 +1,14 @@
-<p>
-  A works!
-</p>
+<div class="wrap_content">
+  <div class="header">
+    <button class="btn_menu-close" (click)="openSideMenu()"></button>
+  </div>
+  <div class="content">
+    <ul *ngIf="videoList.length != 0">
+      <li class="video" *ngFor="let video of videoList">
+        {{video.snippet.description}}
+      </li>
+    </ul>
+  </div>
+</div>
+
+<side-menu #sideMenu></side-menu>

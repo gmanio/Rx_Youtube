@@ -1,14 +1,16 @@
 import { Injectable } from "@angular/core";
 import { WindowRefService } from "./window-ref.service";
+import { Subject, Observable } from "rxjs";
 
 @Injectable()
 export class YoutubeService {
-  static APPKEY = "AIzaSyA4k_7jggyPzjs1Tv90go3eoRyn5War9LQ";
+  static AppKey = "AIzaSyA4k_7jggyPzjs1Tv90go3eoRyn5War9LQ";
 
   private gapi: any;
   private oClient: any;
   private request;
-  public isEnable: boolean = false;
+  public isEnableService = new Subject();
+  private nextPageToken: any;
 
   constructor(private windowRef: WindowRefService) {
     this.onLoadGapi();
@@ -21,23 +23,39 @@ export class YoutubeService {
 
   onLoadClient() {
     this.oClient = this.gapi.client;
-    this.oClient.setApiKey(YoutubeService.APPKEY);
+    this.oClient.setApiKey(YoutubeService.AppKey);
 
-    let youtube = this.oClient.load("youtube", "v3", () => {
+    this.oClient.load("youtube", "v3", () => {
       this.request = this.oClient.youtube.search.list;
-      this.isEnable = true;
+      this.isEnableService.next();
     });
   }
 
-  getVideos() {
+  public getVideos(option) {
     let initOption = {
       part: "snippet", //required
       type: "video",
       q: "donald",
-      maxResults: 20,
-      region: "KR"
+      region: "KR",
+      maxResults: 20
     }
 
-    return this.request(initOption);
+    if ( option ) {
+      initOption = Object.assign({}, initOption, option);
+    }
+
+    let source = Observable.fromPromise(this.request(initOption));
+
+    source.map(res => res['result']).subscribe(this.setSearchResult.bind(this));
+
+    return source;
+  }
+
+  public getMoreVideos() {
+    return this.getVideos({ pageToken: this.nextPageToken });
+  }
+
+  private setSearchResult(res) {
+    this.nextPageToken = res.nextPageToken;
   }
 }

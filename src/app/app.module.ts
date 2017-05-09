@@ -1,34 +1,46 @@
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
-import { AppComponent } from './app.component';
+/**
+ * Router
+ */
+import { RootRouter } from "./app.routes";
+
+/**
+ * Services
+ */
 import { WindowRefService } from "./services/window-ref.service";
 import { YoutubeService } from "./services/youtube.service";
-import { YoutubeComponent } from './components/youtube/youtube.component';
+
+/**
+ * Modules
+ */
+import { YoutubeModule } from "./components/youtube/youtube.module";
+
+/**
+ * Components
+ */
 import { PageNotFoundComponent } from "./components/etc/page-not-found.component";
-import { RootRouter } from "./app.routes";
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { ArchiveComponent } from './components/archive/archive.component';
+import { AppComponent } from './app.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    YoutubeComponent,
-    PageNotFoundComponent,
-    ArchiveComponent
+    PageNotFoundComponent
   ],
   imports: [
     BrowserAnimationsModule,
     BrowserModule,
     FormsModule,
     HttpModule,
-    RootRouter
+    RootRouter,
+    YoutubeModule
   ],
   providers: [
-    WindowRefService,
-    YoutubeService
+    WindowRefService
   ],
   bootstrap: [AppComponent]
 })

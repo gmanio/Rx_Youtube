@@ -16,7 +16,6 @@ export class ArchiveComponent implements OnInit {
     this.router.navigate(['main']);
   }
 
-
   constructor(private router: Router, private location: Location) {
   }
 

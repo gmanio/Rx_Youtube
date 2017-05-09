@@ -19,11 +19,13 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "styles.css"
+        "styles.css",
+        "vendor/swiper/swiper.min.css"
       ],
       "scripts": [
         "vendor/google/v0.js",
-        "vendor/google/gapi.js"
+        "vendor/google/gapi.js",
+        "vendor/swiper/swiper.min.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {

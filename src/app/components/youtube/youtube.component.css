@@ -1,1 +1,5 @@
-:host { display: block; height: 100% ;background: #666666}
+:host { display: block; height: 100%; background: #fff }
+.wrap_content { position: relative; height: 100%; }
+.header { position: relative; }
+.btn_menu-close { display: inline-block; width: 45px; height: 45px; }
+.video { margin: 5px; }
