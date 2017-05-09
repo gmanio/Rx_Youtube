@@ -3,8 +3,9 @@
     <button class="btn_menu-close" (click)="openSideMenu()"></button>
   </div>
   <div class="content">
-    <ul *ngIf="videoList.length != 0">
+    <ul *ngIf="videoList">
       <li class="video" *ngFor="let video of videoList">
+        <img src="{{video.snippet.thumbnails.high.url}}" alt="{{video.snippet.title}}">
         {{video.snippet.description}}
       </li>
     </ul>

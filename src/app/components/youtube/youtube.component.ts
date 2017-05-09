@@ -1,4 +1,7 @@
-import { Component, HostListener, AfterContentInit, AfterViewInit, ViewChild } from '@angular/core';
+import {
+  Component, HostListener, AfterContentInit, AfterViewInit, ViewChild, OnChanges,
+  ChangeDetectorRef
+} from '@angular/core';
 import { YoutubeService } from "../../services/youtube.service";
 import { slideInOutAnimation } from "../animations/slide.animation";
 import { Router } from "@angular/router";
@@ -14,29 +17,30 @@ import { MenuComponent } from "../menu/menu.component";
 })
 export class YoutubeComponent {
   public videoList = [];
+
   @ViewChild('sideMenu') menuComponent: MenuComponent;
 
-  constructor(private youtube: YoutubeService,
-              private router: Router) {
+  constructor(private youtube: YoutubeService, private changeDetector: ChangeDetectorRef) {
 
-    this.youtube.isEnableService.subscribe(this.getVideo.bind(this))
+    this.youtube.isEnableService.subscribe(() => this.getVideo())
   }
 
   getVideo() {
     this.youtube.getVideos({ q: 'test' })
       .map(res => res['result']['items'])
-      .subscribe(this.onSuccessLoadVideos.bind(this));
+      .subscribe((res) => this.onSuccessLoadVideos(res));
   }
 
-  getMoreVideos(){
+  getMoreVideos() {
     this.youtube.getMoreVideos()
       .map(res => res['result']['items'])
-      .subscribe(this.onSuccessLoadVideos.bind(this));
+      .subscribe((res) => this.onSuccessLoadVideos(res));
+
   }
 
   onSuccessLoadVideos(res) {
-    console.log(res);
     this.videoList = res;
+    this.changeDetector.detectChanges();
   }
 
   public openSideMenu() {
