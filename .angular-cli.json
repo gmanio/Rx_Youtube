@@ -14,9 +14,9 @@
       "index": "index.html",
       "main": "main.ts",
       "polyfills": "polyfills.ts",
-      "test": "test.ts",
-      "tsconfig": "tsconfig.app.json",
-      "testTsconfig": "tsconfig.spec.json",
+      "test": "../config/test.ts",
+      "tsconfig": "../config/tsconfig.app.json",
+      "testTsconfig": "../config/tsconfig.spec.json",
       "prefix": "app",
       "styles": [
         "styles.css",
@@ -36,7 +36,7 @@
   ],
   "e2e": {
     "protractor": {
-      "config": "./protractor.conf.js"
+      "config": "./config/protractor.conf.js"
     }
   },
   "lint": [
@@ -52,7 +52,7 @@
   ],
   "test": {
     "karma": {
-      "config": "./karma.conf.js"
+      "config": "./config/karma.conf.js"
     }
   },
   "defaults": {
