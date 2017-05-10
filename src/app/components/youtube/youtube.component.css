@@ -1,5 +1,7 @@
 :host { display: block; height: 100%; background: #fff }
-.wrap_content { position: relative; height: 100%; }
-.header { position: relative; }
-.btn_menu-close { display: inline-block; width: 45px; height: 45px; }
+.wrap_content { position: relative; padding: 50px 0; }
+.header { overflow: hidden; position: fixed; top: 0; width: 100%; background: #cc181e; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.75) }
+.btn_menu-close { float: left; display: inline-block; width: 50px; height: 50px; }
+.video_list { overflow: hidden; }
 .video { margin: 5px; }
+

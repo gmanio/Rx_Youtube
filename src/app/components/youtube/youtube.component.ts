@@ -1,12 +1,12 @@
 import {
-  Component, HostListener, AfterContentInit, AfterViewInit, ViewChild, OnChanges,
-  ChangeDetectorRef
+  Component, HostListener, AfterContentInit, AfterViewInit, ViewChild,
+  ChangeDetectorRef, OnInit, OnDestroy
 } from '@angular/core';
 import { YoutubeService } from "../../services/youtube.service";
 import { slideInOutAnimation } from "../animations/slide.animation";
-import { Router } from "@angular/router";
-import { Observable } from "rxjs";
 import { MenuComponent } from "../menu/menu.component";
+import { Subscription } from "rxjs";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-youtube',
@@ -15,14 +15,28 @@ import { MenuComponent } from "../menu/menu.component";
   animations: [slideInOutAnimation],
   host: { '[@slideInOutAnimation]': '' }
 })
-export class YoutubeComponent {
+export class YoutubeComponent implements OnInit, OnDestroy {
+  private subscription: Subscription;
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
+
+  ngOnInit(): void {
+    if ( this.youtube.isLoadedYoutubeClient ) {
+      this.getVideo();
+    }
+
+    this.subscription = this.youtube.isEnableService.subscribe(() => this.getVideo());
+  }
+
   public videoList = [];
 
   @ViewChild('sideMenu') menuComponent: MenuComponent;
 
-  constructor(private youtube: YoutubeService, private changeDetector: ChangeDetectorRef) {
-
-    this.youtube.isEnableService.subscribe(() => this.getVideo())
+  constructor(private youtube: YoutubeService,
+              private router: Router,
+              private changeDetector: ChangeDetectorRef) {
   }
 
   getVideo() {
@@ -35,7 +49,6 @@ export class YoutubeComponent {
     this.youtube.getMoreVideos()
       .map(res => res['result']['items'])
       .subscribe((res) => this.onSuccessLoadVideos(res));
-
   }
 
   onSuccessLoadVideos(res) {
@@ -45,5 +58,9 @@ export class YoutubeComponent {
 
   public openSideMenu() {
     this.menuComponent.open();
+  }
+
+  public onRoutesArchive() {
+    this.router.navigate(['archive']);
   }
 }

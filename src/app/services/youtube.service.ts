@@ -6,11 +6,12 @@ import { Subject, Observable } from "rxjs";
 export class YoutubeService {
   static AppKey = "AIzaSyA4k_7jggyPzjs1Tv90go3eoRyn5War9LQ";
 
-  private gapi: any;
-  private oClient: any;
-  private request;
   public isEnableService = new Subject();
-  private nextPageToken: any;
+  private gapi;
+  private oClient;
+  private request;
+  private nextPageToken;
+  public isLoadedYoutubeClient: boolean = false;
 
   constructor(private windowRef: WindowRefService) {
     this.onLoadGapi();
@@ -18,7 +19,7 @@ export class YoutubeService {
 
   onLoadGapi() {
     this.gapi = this.windowRef.nativeWindow.gapi;
-    this.gapi.load("client", this.onLoadClient.bind(this))
+    this.gapi.load("client", () => this.onLoadClient());
   }
 
   onLoadClient() {
@@ -27,13 +28,14 @@ export class YoutubeService {
 
     this.oClient.load("youtube", "v3", () => {
       this.request = this.oClient.youtube.search.list;
+      this.isLoadedYoutubeClient = true;
       this.isEnableService.next();
     });
   }
 
   public getVideos(option) {
     let initOption = {
-      part: "snippet", //required
+      part: "snippet",
       type: "video",
       q: "donald",
       region: "KR",
@@ -46,7 +48,7 @@ export class YoutubeService {
 
     let source = Observable.fromPromise(this.request(initOption));
 
-    source.map(res => res['result']).subscribe(this.setSearchResult.bind(this));
+    source.subscribe((res) => this.setSearchResult(res));
 
     return source;
   }
