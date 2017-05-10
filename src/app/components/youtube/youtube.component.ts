@@ -12,11 +12,14 @@ import { Router } from "@angular/router";
   selector: 'app-youtube',
   templateUrl: './youtube.component.html',
   styleUrls: ['./youtube.component.css'],
-  animations: [slideInOutAnimation],
-  host: { '[@slideInOutAnimation]': '' }
+  // animations: [slideInOutAnimation],
+  // host: { '[@slideInOutAnimation]': '' }
 })
 export class YoutubeComponent implements OnInit, OnDestroy {
+  public videoList = [];
   private subscription: Subscription;
+
+  @ViewChild('sideMenu') menuComponent: MenuComponent;
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
@@ -29,10 +32,6 @@ export class YoutubeComponent implements OnInit, OnDestroy {
 
     this.subscription = this.youtube.isEnableService.subscribe(() => this.getVideo());
   }
-
-  public videoList = [];
-
-  @ViewChild('sideMenu') menuComponent: MenuComponent;
 
   constructor(private youtube: YoutubeService,
               private router: Router,
