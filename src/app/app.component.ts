@@ -7,17 +7,9 @@ import { YoutubeService } from "./services/youtube.service";
   styleUrls: ['./app.component.css']
 })
 
-export class AppComponent implements AfterViewInit, AfterContentInit {
-  ngAfterViewInit(): void {
-    console.log('AfterViewInit');
-  }
-
-  ngAfterContentInit(): void {
-    console.log('AfterContentInit');
-  }
-
-  constructor() {
-    this.printDevLogo()
+export class AppComponent {
+  constructor(private youtube: YoutubeService) {
+    this.printDevLogo();
   }
 
   private printDevLogo() {

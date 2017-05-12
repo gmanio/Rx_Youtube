@@ -25,11 +25,14 @@ import { YoutubeModule } from "./components/youtube/youtube.module";
  */
 import { PageNotFoundComponent } from "./components/etc/page-not-found.component";
 import { AppComponent } from './app.component';
+import { RouterGuardService } from "./services/router-guard.service";
+import { ArchiveComponent } from "./components/archive/archive.component";
 
 @NgModule({
   declarations: [
     AppComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    ArchiveComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -40,7 +43,8 @@ import { AppComponent } from './app.component';
     YoutubeModule
   ],
   providers: [
-    WindowRefService
+    WindowRefService,
+    RouterGuardService
   ],
   bootstrap: [AppComponent]
 })

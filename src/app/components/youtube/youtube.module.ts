@@ -11,7 +11,6 @@ import { YoutubeService } from "../../services/youtube.service";
   ],
   declarations: [
     YoutubeComponent,
-    ArchiveComponent,
     MenuComponent
   ],
   providers: [

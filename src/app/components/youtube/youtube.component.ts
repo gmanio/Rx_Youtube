@@ -21,8 +21,9 @@ export class YoutubeComponent implements OnInit, OnDestroy {
 
   @ViewChild('sideMenu') menuComponent: MenuComponent;
 
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+  constructor(private router: Router,
+              private youtube: YoutubeService,
+              private changeDetector: ChangeDetectorRef) {
   }
 
   ngOnInit(): void {
@@ -33,30 +34,33 @@ export class YoutubeComponent implements OnInit, OnDestroy {
     this.subscription = this.youtube.isEnableService.subscribe(() => this.getVideo());
   }
 
-  constructor(private youtube: YoutubeService,
-              private router: Router,
-              private changeDetector: ChangeDetectorRef) {
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
   getVideo() {
-    this.youtube.getVideos({ q: 'test' })
+    this.youtube.requestVideoList({ q: 'test' })
       .map(res => res['result']['items'])
-      .subscribe((res) => this.onSuccessLoadVideos(res));
+      .subscribe((res) => this.setVideoList(res));
   }
 
   getMoreVideos() {
-    this.youtube.getMoreVideos()
+    this.youtube.requestMoreVideoList()
       .map(res => res['result']['items'])
-      .subscribe((res) => this.onSuccessLoadVideos(res));
+      .subscribe((res) => this.setVideoList(res));
   }
 
-  onSuccessLoadVideos(res) {
+  setVideoList(res) {
     this.videoList = res;
     this.changeDetector.detectChanges();
   }
 
   public openSideMenu() {
     this.menuComponent.open();
+  }
+
+  public closeSideMenu() {
+    this.menuComponent.close();
   }
 
   public onRoutesArchive() {

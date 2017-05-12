@@ -6,11 +6,11 @@ import { Subject, Observable } from "rxjs";
 export class YoutubeService {
   static AppKey = "AIzaSyA4k_7jggyPzjs1Tv90go3eoRyn5War9LQ";
 
-  public isEnableService = new Subject();
   private gapi;
   private oClient;
   private request;
   private nextPageToken;
+  public isEnableService = new Subject();
   public isLoadedYoutubeClient: boolean = false;
 
   constructor(private windowRef: WindowRefService) {
@@ -33,7 +33,7 @@ export class YoutubeService {
     });
   }
 
-  public getVideos(option) {
+  public requestVideoList(option) {
     let initOption = {
       part: "snippet",
       type: "video",
@@ -53,8 +53,8 @@ export class YoutubeService {
     return source;
   }
 
-  public getMoreVideos() {
-    return this.getVideos({ pageToken: this.nextPageToken });
+  public requestMoreVideoList() {
+    return this.requestVideoList({ pageToken: this.nextPageToken });
   }
 
   private setSearchResult(res) {
