@@ -13,7 +13,6 @@ import { RootRouter } from "./app.routes";
  * Services
  */
 import { WindowRefService } from "./services/window-ref.service";
-import { YoutubeService } from "./services/youtube.service";
 
 /**
  * Modules

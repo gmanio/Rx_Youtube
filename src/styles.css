@@ -11,7 +11,7 @@ ol, ul { list-style: none }
 blockquote, q { quotes: none }
 blockquote:before, blockquote:after, q:before, q:after { content: ''; content: none }
 table { border-collapse: collapse; border-spacing: 0 }
-html, body { display: block; width: 100%; height: 100% !important; }
+html, body { display: block; width: 100%; height: 100% !important; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
 input { -webkit-appearance: none; }
 h1, h2, h3, h4, h5, h6 { font-weight: normal; }
 a:link { text-decoration: none; }
@@ -30,13 +30,13 @@ table caption, legend, figcaption { position: absolute; left: -10000px; height: 
   font-family: 'Material Icons';
   font-style: normal;
   font-weight: 400;
-  src: local('Material Icons'), local('MaterialIcons-Regular'), url(vendor/material/v22_material_icon.woff2) format('woff2');
+  src: local('Material Icons'), local('MaterialIcons-Regular'), url('vendor/material/v22_material_icon.woff2') format('woff2');
 }
+
 .material-icons {
   font-family: 'Material Icons';
   font-weight: normal;
   font-style: normal;
-  font-size: 24px;
   line-height: 1;
   letter-spacing: normal;
   text-transform: none;

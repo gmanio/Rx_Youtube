@@ -2,15 +2,18 @@
   <!--<div class="header" {(click)="onRoutesArchive()">-->
   <div class="header">
     <button class="btn_menu-close" (click)="openSideMenu()">
-      <i class="material-icons md-48">face</i>
+      <i class="material-icons">view_headline</i>
     </button>
-    <i class="material-icons md-24">android</i>
+    <a class="ico_search material-icons">search</a>
   </div>
   <div class="content">
     <ul class="video_list" *ngIf="videoList">
       <li class="video" *ngFor="let video of videoList">
-        <img src="{{video.snippet.thumbnails.high.url}}" alt="{{video.snippet.title}}">
-        {{video.snippet.description}}
+        <div class="video_content">
+          <i class="material-icons">favorite</i>
+          <img src="{{video.snippet.thumbnails.high.url}}" alt="{{video.snippet.title}}">
+          {{video.snippet.description}}
+        </div>
       </li>
     </ul>
   </div>
