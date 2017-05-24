@@ -8,6 +8,7 @@ export class RouterGuardService implements CanActivate {
   }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean>|Promise<boolean>|boolean {
+debugger;
 
     return true;
   }

@@ -1,9 +1,6 @@
 :host { display: block; height: 100%; background: #fff }
 .wrap_content { position: relative; }
-.header { overflow: hidden; position: fixed; top: 0; width: 100%; background: #cc181e; box-shadow: 0 1px 4px rgba(0, 0, 0, 0.75); z-index: 100 }
-.ico_search { display: inline-block; width: 50px; height: 50px; color: #fff; font-size: 50px; line-height: 50px; }
-.btn_menu-close { float: left; display: inline-block; width: 50px; height: 50px; font-size: 30px; background: #cc181e; }
-.btn_menu-close .material-icons { font-size: 28px; color: #fff }
+
 .content { padding: 50px 0; }
 .video_list { overflow: hidden; }
 .video { position: relative; display: block; }

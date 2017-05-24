@@ -1,7 +1,7 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { Router } from "@angular/router";
 import { Location } from '@angular/common';
-import { slideInOutAnimation } from "../animations/slide.animation";
+import { slideInOutAnimation } from "../../animations/slide.animation";
 
 @Component({
   selector: 'app-archive',

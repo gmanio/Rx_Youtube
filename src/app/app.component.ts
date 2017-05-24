@@ -1,5 +1,4 @@
-import { Component, AfterViewInit, AfterContentInit } from '@angular/core';
-import { YoutubeService } from "./services/youtube.service";
+import { Component} from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +7,7 @@ import { YoutubeService } from "./services/youtube.service";
 })
 
 export class AppComponent {
-  constructor(private youtube: YoutubeService) {
+  constructor() {
     this.printDevLogo();
   }
 

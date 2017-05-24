@@ -17,7 +17,7 @@ import { WindowRefService } from "./services/window-ref.service";
 /**
  * Modules
  */
-import { YoutubeModule } from "./components/youtube/youtube.module";
+// import { HomeModule } from "./components/home/home.module";
 
 /**
  * Components
@@ -25,27 +25,24 @@ import { YoutubeModule } from "./components/youtube/youtube.module";
 import { PageNotFoundComponent } from "./components/etc/page-not-found.component";
 import { AppComponent } from './app.component';
 import { RouterGuardService } from "./services/router-guard.service";
-import { ArchiveComponent } from "./components/archive/archive.component";
-import { HomeComponent } from './components/home/home/home.component';
+import { YoutubeService } from "./services/youtube.service";
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    PageNotFoundComponent,
-    ArchiveComponent,
-    HomeComponent
+    PageNotFoundComponent
   ],
   imports: [
     BrowserAnimationsModule,
     BrowserModule,
     FormsModule,
     HttpModule,
-    RootRouter,
-    YoutubeModule
+    RootRouter
   ],
   providers: [
-    WindowRefService,
-    RouterGuardService
+    WindowRefService
   ],
   bootstrap: [AppComponent]
 })
