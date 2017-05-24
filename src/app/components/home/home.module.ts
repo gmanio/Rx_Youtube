@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { YoutubeComponent } from "../youtube/youtube.component";
 import { MenuComponent } from "../menu/menu.component";
-import { YoutubeComponent } from "./youtube.component";
 import { YoutubeService } from "../../services/youtube.service";
 
 @NgModule({
@@ -16,5 +16,4 @@ import { YoutubeService } from "../../services/youtube.service";
     YoutubeService
   ]
 })
-export class YoutubeModule {
-}
+export class HomeModule { }

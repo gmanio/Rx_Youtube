@@ -26,12 +26,14 @@ import { PageNotFoundComponent } from "./components/etc/page-not-found.component
 import { AppComponent } from './app.component';
 import { RouterGuardService } from "./services/router-guard.service";
 import { ArchiveComponent } from "./components/archive/archive.component";
+import { HomeComponent } from './components/home/home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PageNotFoundComponent,
-    ArchiveComponent
+    ArchiveComponent,
+    HomeComponent
   ],
   imports: [
     BrowserAnimationsModule,

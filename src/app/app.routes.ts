@@ -7,7 +7,7 @@ import { RouterGuardService } from "./services/router-guard.service";
 export const RootRouter = RouterModule.forRoot([
     { path: '', redirectTo: 'main', pathMatch: 'full' },
     {
-      path: 'main', component: YoutubeComponent,
+      path: 'home', component: YoutubeComponent,
       canActivate: [RouterGuardService],
       children:[
         { path: 'archive', component: ArchiveComponent },
