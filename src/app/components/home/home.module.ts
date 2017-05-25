@@ -7,6 +7,7 @@ import { HomeRouter } from "./home.routes";
 import { HomeComponent } from "./home.component";
 import { RouterGuardService } from "../../services/router-guard.service";
 import { ArchiveComponent } from "./archive/archive.component";
+import { SwiperVscrollDirective } from "../../directives/swiper-vscroll.directive";
 
 @NgModule({
   imports: [
@@ -17,7 +18,11 @@ import { ArchiveComponent } from "./archive/archive.component";
     YoutubeComponent,
     MenuComponent,
     HomeComponent,
-    ArchiveComponent
+    ArchiveComponent,
+    SwiperVscrollDirective
+  ],
+  exports: [
+    SwiperVscrollDirective
   ],
   providers: [
     YoutubeService,

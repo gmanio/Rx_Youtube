@@ -1,14 +1,20 @@
-<div class="wrap_content">
-  <div class="content">
-    <ul class="video_list" *ngIf="videoList">
-      <li class="video" *ngFor="let video of videoList">
-        <div class="video_content">
-          <i class="material-icons">favorite</i>
-          <img src="{{video.snippet.thumbnails.high.url}}" alt="{{video.snippet.title}}">
-          {{video.snippet.description}}
-        </div>
-      </li>
-    </ul>
+<div class="swiper-container" swiper-vscroll>
+  <!-- Additional required wrapper -->
+  <div class="swiper-wrapper">
+    <div class="swiper-slide">
+      <div class="content">
+        <ul class="video_list" *ngIf="videoList">
+          <li class="video" *ngFor="let video of videoList">
+            <div class="video_content">
+              <i class="material-icons">favorite</i>
+              <img src="{{video.snippet.thumbnails.high.url}}" alt="{{video.snippet.title}}">
+              {{video.snippet.description}}
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
+  <div class="swiper-scrollbar"></div>
 </div>
 

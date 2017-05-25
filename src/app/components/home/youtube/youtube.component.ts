@@ -1,11 +1,12 @@
-import { Component, ViewChild, ChangeDetectorRef, OnInit, OnDestroy } from '@angular/core';
+import { Component, ChangeDetectorRef, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { Subscription } from "rxjs";
 import { Router } from "@angular/router";
 import { YoutubeService } from "../../../services/youtube.service";
 import { slideInOutAnimation } from "../../animations/slide.animation";
+import { SwiperVscrollDirective } from "../../../directives/swiper-vscroll.directive";
 
 @Component({
-  selector: 'app-youtube',
+  selector: 'YoutubeComponent',
   templateUrl: './youtube.component.html',
   styleUrls: ['./youtube.component.css'],
   animations: [slideInOutAnimation],
@@ -14,6 +15,8 @@ import { slideInOutAnimation } from "../../animations/slide.animation";
 export class YoutubeComponent implements OnInit, OnDestroy {
   public videoList = [];
   private subscription: Subscription;
+
+  @ViewChild(SwiperVscrollDirective) scrollSwiper;
 
   constructor(private router: Router,
               private youtube: YoutubeService,
@@ -47,6 +50,10 @@ export class YoutubeComponent implements OnInit, OnDestroy {
   setVideoList(res) {
     this.videoList = res;
     this.changeDetector.detectChanges();
+
+    setTimeout(() => {
+      this.scrollSwiper.refresh();
+    }, 1000);
   }
 
   public onRoutesArchive() {

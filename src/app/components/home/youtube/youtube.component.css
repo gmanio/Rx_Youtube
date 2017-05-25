@@ -1,7 +1,5 @@
 :host { display: block; height: 100%; background: #fff }
-.wrap_content { position: relative; }
-
-.content { padding: 50px 0; }
+/*.content { padding: 50px 0; }*/
 .video_list { overflow: hidden; }
 .video { position: relative; display: block; }
 /* responsive */
@@ -13,4 +11,21 @@
 }
 @media screen and (min-width: 1280px) {
   .video { float: left; width: 25%; }
+}
+
+/**
+  Scroll Wrapper
+ */
+.swiper-container {
+  margin: 50px 0 0;
+  padding: 0 0 50px;
+  width: 100%;
+  height: 100%;
+}
+.swiper-slide {
+  height: auto;
+  box-sizing: border-box;
+}
+.v-swiper > .swiper-slide {
+  height: auto;
 }
