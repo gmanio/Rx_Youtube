@@ -3,7 +3,7 @@ import { Directive, ElementRef, AfterViewInit, EventEmitter, Output } from "@ang
 declare var Swiper;
 
 @Directive({
-  selector: '[swiper-vscroll]'
+  selector: '[vScroll]'
 })
 
 export class SwiperVscrollDirective implements AfterViewInit {

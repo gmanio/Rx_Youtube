@@ -1,4 +1,4 @@
-<div class="swiper-container" swiper-vscroll>
+<div class="swiper-container">
   <!-- Additional required wrapper -->
   <div class="swiper-wrapper">
     <div class="swiper-slide">
@@ -6,9 +6,11 @@
         <ul class="video_list" *ngIf="videoList">
           <li class="video" *ngFor="let video of videoList">
             <div class="video_content">
-              <i class="material-icons">favorite</i>
               <img src="{{video.snippet.thumbnails.high.url}}" alt="{{video.snippet.title}}">
-              {{video.snippet.description}}
+              <div class="description">
+                <!--<i class="material-icons">favorite</i>-->
+                <span class="txt">{{video.snippet.description}}</span>
+              </div>
             </div>
           </li>
         </ul>

@@ -2,13 +2,14 @@ import { Injectable } from "@angular/core";
 import { WindowRefService } from "./window-ref.service";
 import { Subject, Observable } from "rxjs";
 
+const AppKey = "AIzaSyA4k_7jggyPzjs1Tv90go3eoRyn5War9LQ";
+
 @Injectable()
 export class YoutubeService {
-  static AppKey = "AIzaSyA4k_7jggyPzjs1Tv90go3eoRyn5War9LQ";
 
   private gapi;
   private oClient;
-  private request;
+  private oYoutubeSearchList;
   private nextPageToken;
   public isEnableService = new Subject();
   public isLoadedYoutubeClient: boolean = false;
@@ -24,29 +25,28 @@ export class YoutubeService {
 
   onLoadClient() {
     this.oClient = this.gapi.client;
-    this.oClient.setApiKey(YoutubeService.AppKey);
+    this.oClient.setApiKey(AppKey);
 
     this.oClient.load("youtube", "v3", () => {
-      this.request = this.oClient.youtube.search.list;
+      this.oYoutubeSearchList = this.oClient.youtube.search.list;
       this.isLoadedYoutubeClient = true;
       this.isEnableService.next();
     });
   }
 
   public requestVideoList(option) {
-    let initOption = {
+    let defaultOption = {
       part: "snippet",
       type: "video",
       q: "donald",
       region: "KR",
+      nextPageToken: '',
       maxResults: 20
     }
 
-    if ( option ) {
-      initOption = Object.assign({}, initOption, option);
-    }
+    let params = Object.assign({}, defaultOption, option);
 
-    let source = Observable.fromPromise(this.request(initOption));
+    let source = Observable.fromPromise(this.oYoutubeSearchList(params));
 
     source.subscribe((res) => this.setSearchResult(res));
 

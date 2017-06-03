@@ -15,19 +15,16 @@ import { RootRouter } from "./app.routes";
 import { WindowRefService } from "./services/window-ref.service";
 
 /**
- * Modules
- */
-// import { HomeModule } from "./components/home/home.module";
-
-/**
  * Components
  */
+
 import { PageNotFoundComponent } from "./components/etc/page-not-found.component";
 import { AppComponent } from './app.component';
-import { RouterGuardService } from "./services/router-guard.service";
-import { YoutubeService } from "./services/youtube.service";
 
-
+/**
+ * Modules
+ */
+import { SharedModule } from "./components/shared/shared.module";
 
 @NgModule({
   declarations: [
@@ -37,6 +34,7 @@ import { YoutubeService } from "./services/youtube.service";
   imports: [
     BrowserAnimationsModule,
     BrowserModule,
+    // SharedModule,
     FormsModule,
     HttpModule,
     RootRouter

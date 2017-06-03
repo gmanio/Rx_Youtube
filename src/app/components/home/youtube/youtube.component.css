@@ -1,18 +1,18 @@
-:host { display: block; height: 100%; background: #fff }
-/*.content { padding: 50px 0; }*/
+:host { display: block; padding-top: 50px; height: 100%; background: #fff }
 .video_list { overflow: hidden; }
 .video { position: relative; display: block; }
+.video .description { position: absolute; width: 100%; background-color: rgba(0, 0, 0, 0.7); opacity: 1; bottom: 0; color: #fff }
+.video .description .txt{ overflow: hidden;padding:0 10px;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;word-wrap:break-word; }
 /* responsive */
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 480px) {
   .video { width: 100%; }
 }
-@media screen and (min-width: 768px) and (max-width: 1279px) {
+@media screen and (min-width: 480px) and (max-width: 960px) {
   .video { float: left; width: 50%; }
 }
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 960px) {
   .video { float: left; width: 25%; }
 }
-
 /**
   Scroll Wrapper
  */
