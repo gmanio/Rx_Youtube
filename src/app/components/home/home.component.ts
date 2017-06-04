@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { MenuComponent } from "./menu/menu.component";
 
 @Component({
@@ -6,13 +6,13 @@ import { MenuComponent } from "./menu/menu.component";
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
-
+export class HomeComponent implements AfterViewInit {
   @ViewChild('sideMenu') menuComponent: MenuComponent;
 
   constructor() { }
 
-  ngOnInit() {
+  ngAfterViewInit(): void {
+
   }
 
   public openSideMenu() {

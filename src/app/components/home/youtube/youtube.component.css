@@ -1,8 +1,8 @@
-:host { display: block; padding-top: 50px; height: 100%; background: #fff }
+:host { display: block; padding: 50px 0 0; background: #fff }
 .video_list { overflow: hidden; }
 .video { position: relative; display: block; }
 .video .description { position: absolute; width: 100%; background-color: rgba(0, 0, 0, 0.7); opacity: 1; bottom: 0; color: #fff }
-.video .description .txt{ overflow: hidden;padding:0 10px;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;word-wrap:break-word; }
+.video .description .txt { overflow: hidden; padding: 0 10px; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; word-wrap: break-word; }
 /* responsive */
 @media screen and (max-width: 480px) {
   .video { width: 100%; }
@@ -17,15 +17,10 @@
   Scroll Wrapper
  */
 .swiper-container {
-  margin: 50px 0 0;
-  padding: 0 0 50px;
   width: 100%;
   height: 100%;
 }
 .swiper-slide {
   height: auto;
   box-sizing: border-box;
-}
-.v-swiper > .swiper-slide {
-  height: auto;
 }

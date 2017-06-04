@@ -1,6 +1,6 @@
 import { Directive, ElementRef, AfterViewInit, EventEmitter, Output } from "@angular/core";
 
-declare var Swiper;
+declare let Swiper;
 
 @Directive({
   selector: '[vScroll]'
@@ -22,8 +22,8 @@ export class SwiperVscrollDirective implements AfterViewInit {
       scrollbar: '.swiper-scrollbar',
       direction: 'vertical',
       slidesPerView: 'auto',
-      freeMode: true,
       mousewheelControl: true,
+      freeMode: true,
       // onTouchMove: this.touchMove.bind(this),
       // onTouchStart: this.touchStart.bind(this),
       // onTouchEnd: this.touchEnd.bind(this),

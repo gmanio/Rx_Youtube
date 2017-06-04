@@ -2,8 +2,9 @@ import { RouterModule } from "@angular/router";
 import { PageNotFoundComponent } from "./components/etc/page-not-found.component";
 
 export const RootRouter = RouterModule.forRoot([
-    { path: '', redirectTo: 'home', pathMatch: 'full' },
+    { path: '', loadChildren: './components/home/home.module#HomeModule' },
     { path: 'home', loadChildren: './components/home/home.module#HomeModule' },
+    { path: 'player', loadChildren: './components/player/player.module#PlayerModule' },
     { path: '**', component: PageNotFoundComponent }
   ],
 

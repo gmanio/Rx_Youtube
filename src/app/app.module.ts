@@ -12,7 +12,7 @@ import { RootRouter } from "./app.routes";
 /**
  * Services
  */
-import { WindowRefService } from "./services/window-ref.service";
+
 
 /**
  * Components
@@ -24,7 +24,6 @@ import { AppComponent } from './app.component';
 /**
  * Modules
  */
-import { SharedModule } from "./components/shared/shared.module";
 
 @NgModule({
   declarations: [
@@ -34,13 +33,12 @@ import { SharedModule } from "./components/shared/shared.module";
   imports: [
     BrowserAnimationsModule,
     BrowserModule,
-    // SharedModule,
     FormsModule,
     HttpModule,
     RootRouter
   ],
   providers: [
-    WindowRefService
+    //WindowRefService
   ],
   bootstrap: [AppComponent]
 })

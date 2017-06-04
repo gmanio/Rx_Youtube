@@ -4,13 +4,14 @@ import { SwiperVscrollDirective } from "../../directives/swiper-vscroll.directiv
 
 @NgModule({
   imports: [
-    CommonModule,
-    SwiperVscrollDirective
+    CommonModule
   ],
   exports: [
     SwiperVscrollDirective
   ],
-  declarations: []
+  declarations: [
+    SwiperVscrollDirective
+  ]
 })
 export class SharedModule {
 }

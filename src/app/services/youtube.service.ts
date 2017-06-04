@@ -1,34 +1,31 @@
 import { Injectable } from "@angular/core";
-import { WindowRefService } from "./window-ref.service";
 import { Subject, Observable } from "rxjs";
 
 const AppKey = "AIzaSyA4k_7jggyPzjs1Tv90go3eoRyn5War9LQ";
 
+declare let gapi;
+
 @Injectable()
 export class YoutubeService {
-
-  private gapi;
-  private oClient;
   private oYoutubeSearchList;
   private nextPageToken;
   public isEnableService = new Subject();
   public isLoadedYoutubeClient: boolean = false;
 
-  constructor(private windowRef: WindowRefService) {
+  constructor() {
     this.onLoadGapi();
   }
 
   onLoadGapi() {
-    this.gapi = this.windowRef.nativeWindow.gapi;
-    this.gapi.load("client", () => this.onLoadClient());
+    gapi.load("client", () => this.onLoadClient());
   }
 
   onLoadClient() {
-    this.oClient = this.gapi.client;
-    this.oClient.setApiKey(AppKey);
+    let client = gapi.client;
+    client.setApiKey(AppKey);
 
-    this.oClient.load("youtube", "v3", () => {
-      this.oYoutubeSearchList = this.oClient.youtube.search.list;
+    client.load("youtube", "v3", () => {
+      this.oYoutubeSearchList = client.youtube.search.list;
       this.isLoadedYoutubeClient = true;
       this.isEnableService.next();
     });
