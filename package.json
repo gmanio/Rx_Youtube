@@ -4,7 +4,7 @@
   "description": "simple & fastest web app",
   "scripts": {
     "ng": "ng",
-    "dev": "ng serve --host 192.168.0.26 --port 5000",
+    "dev": "ng serve --host 192.168.0.24 --port 5000",
     "build": "ng build --prod --aot",
     "test": "ng test",
     "lint": "ng lint",

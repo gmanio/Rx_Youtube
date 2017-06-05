@@ -1,4 +1,4 @@
-import { RouterModule } from "@angular/router";
+import { RouterModule, PreloadAllModules } from "@angular/router";
 import { PageNotFoundComponent } from "./components/etc/page-not-found.component";
 
 export const RootRouter = RouterModule.forRoot([
@@ -11,5 +11,8 @@ export const RootRouter = RouterModule.forRoot([
   /**
    *  Some browsers does not support HTML5 pushstate.
    */
-  { useHash: true }
+  {
+    // useHash: true,
+    // preloadingStrategy: PreloadAllModules
+  }
 );

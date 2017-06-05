@@ -20,6 +20,7 @@ import { RootRouter } from "./app.routes";
 
 import { PageNotFoundComponent } from "./components/etc/page-not-found.component";
 import { AppComponent } from './app.component';
+import { APP_BASE_HREF } from "@angular/common";
 
 /**
  * Modules
@@ -38,6 +39,7 @@ import { AppComponent } from './app.component';
     RootRouter
   ],
   providers: [
+    { provide: APP_BASE_HREF, useValue: '/' },
     //WindowRefService
   ],
   bootstrap: [AppComponent]

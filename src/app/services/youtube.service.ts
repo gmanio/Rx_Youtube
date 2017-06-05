@@ -7,10 +7,9 @@ declare let gapi;
 
 @Injectable()
 export class YoutubeService {
-  private oYoutubeSearchList;
   private nextPageToken;
+  private oYoutubeSearchList;
   public isEnableService = new Subject();
-  public isLoadedYoutubeClient: boolean = false;
 
   constructor() {
     this.onLoadGapi();
@@ -26,16 +25,15 @@ export class YoutubeService {
 
     client.load("youtube", "v3", () => {
       this.oYoutubeSearchList = client.youtube.search.list;
-      this.isLoadedYoutubeClient = true;
       this.isEnableService.next();
     });
   }
 
   public requestVideoList(option) {
-    let defaultOption = {
+    const defaultOption = {
       part: "snippet",
       type: "video",
-      q: "donald",
+      q: "wwdc2017",
       region: "KR",
       nextPageToken: '',
       maxResults: 20

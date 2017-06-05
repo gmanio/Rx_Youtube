@@ -1,6 +1,6 @@
 import { Component, ChangeDetectorRef, OnInit, OnDestroy, ViewChild } from '@angular/core';
-import { Subscription } from "rxjs";
-import { Router } from "@angular/router";
+import { Subscription, Observable } from "rxjs";
+import { Router, NavigationExtras } from "@angular/router";
 import { YoutubeService } from "../../../services/youtube.service";
 import { SwiperVscrollDirective } from "../../../directives/swiper-vscroll.directive";
 
@@ -22,10 +22,6 @@ export class YoutubeComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    if ( this.youtube.isLoadedYoutubeClient ) {
-      this.getVideo();
-    }
-
     this.subscription = this.youtube.isEnableService.subscribe(() => this.getVideo());
   }
 
@@ -34,7 +30,11 @@ export class YoutubeComponent implements OnInit, OnDestroy {
   }
 
   getVideo() {
-    this.youtube.requestVideoList({ q: 'test' })
+    const params = {
+      q: 'wwdc2017'
+    }
+
+    this.youtube.requestVideoList(params)
       .map(res => res['result']['items'])
       .subscribe((res) => this.setVideoList(res));
   }
@@ -50,10 +50,22 @@ export class YoutubeComponent implements OnInit, OnDestroy {
     this.changeDetector.detectChanges();
 
 
-    setTimeout(() => {
+    Observable.timer(1000).subscribe(() => {
       console.log(this.scrollSwiper);
+
       this.scrollSwiper.refresh();
-    }, 1000);
+    })
+  }
+
+  onClickPlayVideo(video) {
+    let navigationExtras: NavigationExtras = {
+      queryParamsHandling: "merge",
+      preserveFragment: true,
+      queryParams: video
+    };
+    console.log(video);
+
+    this.router.navigate(['player'], navigationExtras);
   }
 
   public onRoutesArchive() {
