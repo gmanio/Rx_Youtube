@@ -1,9 +1,10 @@
 import "../../../vendor/google/player.js";
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit } from '@angular/core';
 import { Location } from "@angular/common";
 import { ActivatedRoute } from "@angular/router";
 
 declare let onYTReady: Function;
+declare let window: Window;
 declare let YT;
 
 @Component({
@@ -14,22 +15,33 @@ declare let YT;
 
 export class PlayerComponent implements AfterViewInit {
   private oPlayer;
+  private videoId;
 
   constructor(private location: Location,
               private route: ActivatedRoute) {
     this.route.queryParams.subscribe((params) => {
-      debugger;
+      this.videoId = params.videoId;
     })
   }
 
   ngAfterViewInit() {
-    onYTReady = () => {
+    if ( !window['YT'] ) {
+      onYTReady = () => {
+        this.oPlayer = new YT.Player('gPlayer', {
+          height: '100%',
+          width: '100%',
+          videoId: this.videoId
+        })
+      }
+    } else {
       this.oPlayer = new YT.Player('gPlayer', {
         height: '100%',
         width: '100%',
-        videoId: 'M7lc1UVf-VE'
-      });
+        videoId: this.videoId
+      })
     }
+
+
   }
 
   goBack() {

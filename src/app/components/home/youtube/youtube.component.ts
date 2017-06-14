@@ -21,7 +21,11 @@ export class YoutubeComponent implements OnInit, OnDestroy {
               private changeDetector: ChangeDetectorRef) {
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    if ( this.youtube.isLoadedYoutubeClient ) {
+      this.getVideo();
+    }
+
     this.subscription = this.youtube.isEnableService.subscribe(() => this.getVideo());
   }
 
@@ -50,9 +54,7 @@ export class YoutubeComponent implements OnInit, OnDestroy {
     this.changeDetector.detectChanges();
 
 
-    Observable.timer(1000).subscribe(() => {
-      console.log(this.scrollSwiper);
-
+    Observable.timer(100).subscribe(() => {
       this.scrollSwiper.refresh();
     })
   }
@@ -61,7 +63,9 @@ export class YoutubeComponent implements OnInit, OnDestroy {
     let navigationExtras: NavigationExtras = {
       queryParamsHandling: "merge",
       preserveFragment: true,
-      queryParams: video
+      queryParams: {
+        videoId: video.id.videoId
+      }
     };
     console.log(video);
 

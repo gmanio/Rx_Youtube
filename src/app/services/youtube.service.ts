@@ -10,6 +10,7 @@ export class YoutubeService {
   private nextPageToken;
   private oYoutubeSearchList;
   public isEnableService = new Subject();
+  public isLoadedYoutubeClient: boolean = false;
 
   constructor() {
     this.onLoadGapi();
@@ -25,6 +26,7 @@ export class YoutubeService {
 
     client.load("youtube", "v3", () => {
       this.oYoutubeSearchList = client.youtube.search.list;
+      this.isLoadedYoutubeClient = true;
       this.isEnableService.next();
     });
   }

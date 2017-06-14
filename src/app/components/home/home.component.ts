@@ -12,7 +12,6 @@ export class HomeComponent implements AfterViewInit {
   constructor() { }
 
   ngAfterViewInit(): void {
-
   }
 
   public openSideMenu() {
