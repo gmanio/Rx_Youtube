@@ -12,7 +12,7 @@ export const RootRouter = RouterModule.forRoot([
    *  Some browsers does not support HTML5 pushstate.
    */
   {
-    // useHash: true,
+    useHash: true,
     // preloadingStrategy: PreloadAllModules
   }
 );

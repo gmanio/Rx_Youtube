@@ -39,8 +39,7 @@ import { APP_BASE_HREF } from "@angular/common";
     RootRouter
   ],
   providers: [
-    { provide: APP_BASE_HREF, useValue: '/' },
-    //WindowRefService
+    { provide: APP_BASE_HREF, useValue: '/' }
   ],
   bootstrap: [AppComponent]
 })

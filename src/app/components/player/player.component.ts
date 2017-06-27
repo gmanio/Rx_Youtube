@@ -17,9 +17,9 @@ export class PlayerComponent implements AfterViewInit {
   private oPlayer;
   private videoId;
 
-  constructor(private location: Location,
-              private route: ActivatedRoute) {
-    this.route.queryParams.subscribe((params) => {
+  constructor( private location: Location,
+               private route: ActivatedRoute ) {
+    this.route.queryParams.subscribe(( params ) => {
       this.videoId = params.videoId;
     })
   }
@@ -40,8 +40,6 @@ export class PlayerComponent implements AfterViewInit {
         videoId: this.videoId
       })
     }
-
-
   }
 
   goBack() {
