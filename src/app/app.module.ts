@@ -12,12 +12,12 @@ import { RootRouter } from "./app.routes";
 /**
  * Services
  */
+import { LoadingService } from "./services/loading.service";
 
 
 /**
  * Components
  */
-
 import { PageNotFoundComponent } from "./components/etc/page-not-found.component";
 import { AppComponent } from './app.component';
 import { APP_BASE_HREF } from "@angular/common";
@@ -39,6 +39,7 @@ import { APP_BASE_HREF } from "@angular/common";
     RootRouter
   ],
   providers: [
+    LoadingService,
     { provide: APP_BASE_HREF, useValue: '/' }
   ],
   bootstrap: [AppComponent]

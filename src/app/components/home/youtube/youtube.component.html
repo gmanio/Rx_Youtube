@@ -5,7 +5,7 @@
         <ul class="video_list" *ngIf="videoList">
           <li class="video" *ngFor="let video of videoList">
             <div class="video_content">
-              <a (click)="onClickPlayVideo(video)">
+              <a class="link" (click)="onClickPlayVideo(video)">
                 <img src="{{video.snippet.thumbnails.high.url}}" alt="{{video.snippet.title}}">
                 <div class="description">
                   <!--<i class="material-icons">favorite</i>-->

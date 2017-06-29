@@ -3,6 +3,7 @@
 .video { position: relative; display: block; }
 .video .description { position: absolute; width: 100%; background-color: rgba(0, 0, 0, 0.7); opacity: 1; bottom: 0; color: #fff }
 .video .description .txt { overflow: hidden; padding: 0 10px; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; word-wrap: break-word; }
+.video_content .link { display: block; }
 /* responsive */
 @media screen and (max-width: 480px) {
   .video { width: 100%; }

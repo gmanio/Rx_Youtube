@@ -3,7 +3,7 @@ import { Subject, Observable } from "rxjs";
 
 const AppKey = "AIzaSyA4k_7jggyPzjs1Tv90go3eoRyn5War9LQ";
 
-declare let gapi;
+declare const gapi;
 
 @Injectable()
 export class YoutubeService {
@@ -11,21 +11,22 @@ export class YoutubeService {
   private oYoutubeSearchList;
   public isEnableService = new Subject();
   public isLoadedYoutubeClient: boolean = false;
+  private googleAPI: any;
 
   constructor() {
     this.onLoadGapi();
   }
 
   onLoadGapi() {
-    gapi.load("client", () => this.onLoadClient());
+    this.googleAPI = gapi;
+    this.googleAPI.load("client", () => this.onLoadClient());
   }
 
   onLoadClient() {
-    let client = gapi.client;
-    client.setApiKey(AppKey);
+    this.googleAPI.client.setApiKey(AppKey);
 
-    client.load("youtube", "v3", () => {
-      this.oYoutubeSearchList = client.youtube.search.list;
+    this.googleAPI.client.load("youtube", "v3", () => {
+      this.oYoutubeSearchList = this.googleAPI.client.youtube.search.list;
       this.isLoadedYoutubeClient = true;
       this.isEnableService.next();
     });

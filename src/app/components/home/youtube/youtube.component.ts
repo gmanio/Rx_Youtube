@@ -11,10 +11,10 @@ import { SwiperVscrollDirective } from "../../../directives/swiper-vscroll.direc
 })
 
 export class YoutubeComponent implements OnInit, OnDestroy {
+  @ViewChild(SwiperVscrollDirective) scrollSwiper;
+
   public videoList = [];
   private subscription: Subscription;
-
-  @ViewChild(SwiperVscrollDirective) scrollSwiper;
 
   constructor(private router: Router,
               private youtube: YoutubeService,
@@ -67,7 +67,6 @@ export class YoutubeComponent implements OnInit, OnDestroy {
         videoId: video.id.videoId
       }
     };
-    console.log(video);
 
     this.router.navigate(['player'], navigationExtras);
   }
