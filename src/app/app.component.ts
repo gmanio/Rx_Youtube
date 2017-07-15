@@ -11,6 +11,8 @@ export class AppComponent {
   public loaderStatus: boolean = false;
 
   constructor(private loader: LoadingService) {
+
+
     this.printDevLogo();
 
     this.loader.loaderStatus.subscribe((status) => {

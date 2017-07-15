@@ -27,12 +27,13 @@ import { APP_BASE_HREF } from "@angular/common";
  */
 import { HomeModule } from "./components/home/home.module";
 import { PlayerModule } from "./components/player/player.module";
+import { FirebaseService } from "./services/firebase.service";
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserAnimationsModule,
@@ -45,6 +46,7 @@ import { PlayerModule } from "./components/player/player.module";
   ],
   providers: [
     LoadingService,
+    FirebaseService,
     { provide: APP_BASE_HREF, useValue: '/' }
   ],
   bootstrap: [AppComponent]

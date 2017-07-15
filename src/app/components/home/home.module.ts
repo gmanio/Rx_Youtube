@@ -8,18 +8,22 @@ import { RouterGuardService } from "../../services/router-guard.service";
 import { ArchiveComponent } from "./archive/archive.component";
 import { SharedModule } from "../shared/shared.module";
 import { YoutubeComponent } from "./youtube/youtube.component";
+import { LoginComponent } from "../login/login.component";
+import { FormsModule } from "@angular/forms";
 
 @NgModule({
   imports: [
     CommonModule,
     SharedModule,
+    FormsModule,
     HomeRouter
   ],
   declarations: [
     MenuComponent,
     HomeComponent,
     ArchiveComponent,
-    YoutubeComponent
+    YoutubeComponent,
+    LoginComponent
   ],
   providers: [
     YoutubeService,
