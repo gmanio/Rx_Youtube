@@ -12,13 +12,6 @@ export class HomeComponent implements AfterViewInit {
   @ViewChild('sideMenu') menuComponent: MenuComponent;
 
   constructor(private loader: LoadingService) {
-    Observable.timer(3000).subscribe(() => {
-      this.loader.startLoading();
-
-      Observable.timer(3000).subscribe(() => {
-        this.loader.stopLoading();
-      })
-    })
   }
 
   ngAfterViewInit() {

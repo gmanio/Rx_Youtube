@@ -83,7 +83,7 @@
       height: 2px;
     }
     .progressBar {
-      width: 30%;
+      width: 100%;
       height: 100%;
       background: #cc181e;
     }
@@ -247,8 +247,14 @@
 </article>
 
 <script>
-  window.addEventListener('scroll', function(e){
-      debugger;
+  window.addEventListener('scroll', function (e) {
+//    let elArticle = document.querySelector('article');
+
+    let docScrollTop = document.body.scrollTop;
+    let docScrollHeight = document.body.scrollHeight - window.innerHeight;
+    let percent = 100 - (docScrollTop / docScrollHeight * 100);
+
+    document.querySelector('.progressBar').style.transform = `translateX(-${percent}%)`;
   })
 </script>
 </body>

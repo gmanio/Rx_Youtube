@@ -25,6 +25,9 @@ import { APP_BASE_HREF } from "@angular/common";
 /**
  * Modules
  */
+import { HomeModule } from "./components/home/home.module";
+import { PlayerModule } from "./components/player/player.module";
+
 
 @NgModule({
   declarations: [
@@ -36,6 +39,8 @@ import { APP_BASE_HREF } from "@angular/common";
     BrowserModule,
     FormsModule,
     HttpModule,
+    HomeModule,
+    PlayerModule,
     RootRouter
   ],
   providers: [

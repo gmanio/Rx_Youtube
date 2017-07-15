@@ -53,8 +53,7 @@ export class YoutubeComponent implements OnInit, OnDestroy {
     this.videoList = res;
     this.changeDetector.detectChanges();
 
-
-    Observable.timer(100).subscribe(() => {
+    Observable.timer(400).subscribe(() => {
       this.scrollSwiper.refresh();
     })
   }
