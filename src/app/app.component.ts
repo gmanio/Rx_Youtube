@@ -1,17 +1,24 @@
 import { Component } from '@angular/core';
 import { LoadingService } from "./services/loading.service";
+import { ApiService } from "./services/api.service";
 
 @Component({
   selector: 'App',
   templateUrl: './app.component.html',
-  styleUrls: [ './app.component.css' ]
+  styleUrls: ['./app.component.css']
 })
 
 export class AppComponent {
   public loaderStatus: boolean = false;
 
-  constructor(private loader: LoadingService) {
+  constructor(private loader: LoadingService,
+              private api: ApiService) {
 
+    // this.api.request().subscribe((res) => {
+    //   debugger;
+    // }, (error) => {
+    //   debugger;
+    // })
 
     this.printDevLogo();
 

@@ -3,11 +3,9 @@ import * as firebase from 'firebase';
 
 @Injectable()
 export class FirebaseService {
-  private oInstance = firebase;
-
   constructor() {
     // Initialize Firebase
-// TODO: Replace with your project's customized code snippet
+    // TODO: Replace with your project's customized code snippet
     var config = {
       apiKey: "AIzaSyDXv4TpTD3Jm1HHnXoOphHq7caRmNZ1P2E",
       authDomain: "rxtube-59172.firebaseapp.com",
@@ -17,18 +15,28 @@ export class FirebaseService {
       messagingSenderId: "214310109076"
     };
 
-    this.oInstance.initializeApp(config);
+    firebase.initializeApp(config);
   }
 
-  signIn(email, password){
-    this.oInstance.auth().signInWithEmailAndPassword(email, password)
-      .then(()=>{
-      debugger;
+  signIn(email, password) {
+    firebase.auth().signInWithEmailAndPassword(email, password)
+      .then((user) => {
+        firebase.auth().onAuthStateChanged(function(user) {
+          if( user ) {
+            // User is signed in.
+            debugger
+          } else {
+            // No user is signed in.
+            debugger
+          }
+        });
+
+        console.log(firebase.auth().verify);
       })
       .catch(function(error) {
-      // Handle Errors here.
-      debugger;
-      // ...
-    });
+        // Handle Errors here.
+        debugger;
+        // ...
+      });
   }
 }

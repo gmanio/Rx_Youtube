@@ -2,7 +2,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 
 /**
  * Router
@@ -13,7 +13,6 @@ import { RootRouter } from "./app.routes";
  * Services
  */
 import { LoadingService } from "./services/loading.service";
-
 
 /**
  * Components
@@ -28,6 +27,8 @@ import { APP_BASE_HREF } from "@angular/common";
 import { HomeModule } from "./components/home/home.module";
 import { PlayerModule } from "./components/player/player.module";
 import { FirebaseService } from "./services/firebase.service";
+import { ApiService } from "./services/api.service";
+import { HttpModule } from "@angular/http";
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import { FirebaseService } from "./services/firebase.service";
     BrowserModule,
     FormsModule,
     HttpModule,
+    HttpClientModule,
     HomeModule,
     PlayerModule,
     RootRouter
@@ -47,6 +49,7 @@ import { FirebaseService } from "./services/firebase.service";
   providers: [
     LoadingService,
     FirebaseService,
+    ApiService,
     { provide: APP_BASE_HREF, useValue: '/' }
   ],
   bootstrap: [AppComponent]

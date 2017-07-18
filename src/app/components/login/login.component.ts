@@ -6,18 +6,20 @@ import { FirebaseService } from "../../services/firebase.service";
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
+
 export class LoginComponent implements OnInit {
-
   public email = "";
-  public pwd = "";
+  public passwd = "";
 
-  constructor(private loginService : FirebaseService) {
+  constructor(private loginService: FirebaseService) {
+
   }
 
   ngOnInit() {
   }
 
   login() {
-    this.loginService.signIn(this.email, this.pwd)
+
+    this.loginService.signIn(this.email, this.passwd);
   }
 }

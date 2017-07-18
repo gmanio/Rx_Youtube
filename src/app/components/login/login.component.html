@@ -1,3 +1,24 @@
-id:<input type="text" id="email" [(ngModel)]="email">
-pwd:<input type="password" id="pwd" [(ngModel)]="pwd">
-<button class="confirm" (click)="login()">confirm</button>
+<div class="wrapper">
+  <div class="container">
+    <h1>Welcome</h1>
+
+    <div class="wrap_form">
+      <input type="text" [(ngModel)]="email" placeholder="Email">
+      <input type="password" [(ngModel)]="passwd" placeholder="Password">
+      <button type="submit" id="login-button" (click)="login()">Let me in</button>
+    </div>
+  </div>
+
+  <ul class="bg-bubbles">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
+</div>
