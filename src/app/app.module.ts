@@ -25,15 +25,16 @@ import { APP_BASE_HREF } from "@angular/common";
  * Modules
  */
 import { HomeModule } from "./components/home/home.module";
-import { PlayerModule } from "./components/player/player.module";
 import { FirebaseService } from "./services/firebase.service";
 import { ApiService } from "./services/api.service";
 import { HttpModule } from "@angular/http";
+import { LoginComponent } from "./components/login/login.component";
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    LoginComponent,
     PageNotFoundComponent,
   ],
   imports: [
@@ -43,7 +44,6 @@ import { HttpModule } from "@angular/http";
     HttpModule,
     HttpClientModule,
     HomeModule,
-    PlayerModule,
     RootRouter
   ],
   providers: [

@@ -21,22 +21,41 @@ export class FirebaseService {
   signIn(email, password) {
     firebase.auth().signInWithEmailAndPassword(email, password)
       .then((user) => {
-        firebase.auth().onAuthStateChanged(function(user) {
-          if( user ) {
+        var cred = firebase.auth.EmailAuthProvider.credential(
+          email,
+          password
+        );
+
+        firebase.auth().onAuthStateChanged((user) => {
+          if ( user ) {
             // User is signed in.
-            debugger
+            debugger;
           } else {
             // No user is signed in.
-            debugger
+            debugger;
           }
-        });
+        })
 
-        console.log(firebase.auth().verify);
       })
-      .catch(function(error) {
+      .catch(function (error) {
         // Handle Errors here.
-        debugger;
-        // ...
+        var errorCode = error['code'];
+        var errorMessage = error.message;
+        if ( errorCode === 'auth/wrong-password' ) {
+          alert('Wrong password.');
+        } else {
+          alert(errorMessage);
+        }
+      })
+  }
+
+  register(email, password) {
+    firebase.auth()
+      .createUserWithEmailAndPassword(email, password)
+      .catch(function (error) {
+        // Handle Errors here.
+        var errorCode = error['code'];
+        var errorMessage = error.message;
       });
   }
 }

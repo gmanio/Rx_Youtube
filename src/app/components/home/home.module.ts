@@ -22,8 +22,7 @@ import { FormsModule } from "@angular/forms";
     MenuComponent,
     HomeComponent,
     ArchiveComponent,
-    YoutubeComponent,
-    LoginComponent
+    YoutubeComponent
   ],
   providers: [
     YoutubeService,

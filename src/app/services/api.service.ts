@@ -9,6 +9,6 @@ export class ApiService {
 
   request() {
     // return this.http.get('http://finance.daum.net/xml/xmlallpanel.daum?stype=P&type=S')
-    // return this.http.get('/xml/xmlallpanel.daum?stype=P&type=S')
+    return this.http.get('/xml/xmlallpanel.daum?stype=P&type=S')
   }
 }

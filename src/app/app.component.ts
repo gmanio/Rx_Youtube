@@ -13,13 +13,6 @@ export class AppComponent {
 
   constructor(private loader: LoadingService,
               private api: ApiService) {
-
-    // this.api.request().subscribe((res) => {
-    //   debugger;
-    // }, (error) => {
-    //   debugger;
-    // })
-
     this.printDevLogo();
 
     this.loader.loaderStatus.subscribe((status) => {
