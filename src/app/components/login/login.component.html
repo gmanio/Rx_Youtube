@@ -1,11 +1,14 @@
+<!--
 <div class="wrapper">
   <div class="container">
-    <h1>Welcome</h1>
+    <h1>Greeting!</h1>
 
     <div class="wrap_form">
       <input type="text" [(ngModel)]="email" placeholder="Email">
       <input type="password" [(ngModel)]="passwd" placeholder="Password">
-      <button type="submit" id="login-button" (click)="login()">Let me in</button>
+      <button type="submit" (click)="login()">Let me in</button>
+      <button type="submit" (click)="logout()">logout</button>
+      <div>currentUser : {{user}}</div>
     </div>
   </div>
 
@@ -22,3 +25,4 @@
     <li></li>
   </ul>
 </div>
+-->

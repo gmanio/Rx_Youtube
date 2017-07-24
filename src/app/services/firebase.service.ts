@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import * as firebase from 'firebase';
+import { Observable, Subject } from "rxjs";
 
 @Injectable()
 export class FirebaseService {
+  private currentUser = null;
+
   constructor() {
-    // Initialize Firebase
-    // TODO: Replace with your project's customized code snippet
-    var config = {
+    let config = {
       apiKey: "AIzaSyDXv4TpTD3Jm1HHnXoOphHq7caRmNZ1P2E",
       authDomain: "rxtube-59172.firebaseapp.com",
       databaseURL: "https://rxtube-59172.firebaseio.com",
@@ -18,26 +19,35 @@ export class FirebaseService {
     firebase.initializeApp(config);
   }
 
-  signIn(email, password) {
-    firebase.auth().signInWithEmailAndPassword(email, password)
-      .then((user) => {
-        var cred = firebase.auth.EmailAuthProvider.credential(
-          email,
-          password
-        );
+  public resetPassword(email) {
+    firebase.auth().sendPasswordResetEmail(email).then(() => {
+      debugger;
+    })
+  }
 
-        firebase.auth().onAuthStateChanged((user) => {
-          if ( user ) {
-            // User is signed in.
-            debugger;
-          } else {
-            // No user is signed in.
-            debugger;
-          }
-        })
+  public signOut() {
+    let subject = new Subject();
 
-      })
-      .catch(function (error) {
+    Observable.fromPromise(firebase.auth().signOut()).subscribe(subject);
+
+    subject.subscribe(() => {
+      console.log(firebase.auth().currentUser);
+      debugger;
+    })
+
+    return subject;
+  }
+
+  public signIn(email, password): Observable<any> {
+    const signIn$ = Observable.fromPromise(firebase.auth().signInWithEmailAndPassword(email, password))
+
+    let signObservable = signIn$.share();
+
+    signObservable.subscribe(
+      (user) => {
+        this.currentUser = user;
+      },
+      (error) => {
         // Handle Errors here.
         var errorCode = error['code'];
         var errorMessage = error.message;
@@ -47,6 +57,38 @@ export class FirebaseService {
           alert(errorMessage);
         }
       })
+
+    return signObservable;
+
+    //
+    // signIn$.subscribe();
+    // .then((user) => {
+    //   var cred = firebase.auth.EmailAuthProvider.credential(
+    //     email,
+    //     password
+    //   );
+    //
+    //   firebase.auth().onAuthStateChanged((user) => {
+    //     if ( user ) {
+    //       // User is signed in.
+    //       debugger;
+    //     } else {
+    //       // No user is signed in.
+    //       debugger;
+    //     }
+    //   })
+    //
+    // })
+    // .catch(function (error) {
+    //   // Handle Errors here.
+    //   var errorCode = error['code'];
+    //   var errorMessage = error.message;
+    //   if ( errorCode === 'auth/wrong-password' ) {
+    //     alert('Wrong password.');
+    //   } else {
+    //     alert(errorMessage);
+    //   }
+    // })
   }
 
   register(email, password) {
