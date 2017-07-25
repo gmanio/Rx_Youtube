@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FirebaseService } from "../../services/firebase.service";
-import { Observable } from "rxjs";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -13,49 +13,19 @@ export class LoginComponent implements OnInit {
   public passwd = "";
   public user = null;
 
-  constructor(private loginService: FirebaseService) {
+  constructor(private loginService: FirebaseService,
+              private router: Router) {
   }
 
   ngOnInit() {
-    // var outer = Observable.interval(1000).take(2);
-    //
-    // var source = outer.mergeMap(function (x) {
-    //   console.log('outer');
-    //   return Observable.interval(500).take(3).map(y => `${x}:${y}`)
-    // });
-    //
-    // source.subscribe(d => console.log(d));
-    //
-    //
-    // var outer = Observable.interval(1000).take(2);
-    //
-    // var source = outer.switchMap(function (x, y) {
-    //   console.log('outer');
-    //   return Observable.interval(500).take(3).map(y => `${x}:${y}`)
-    // });
 
-    // var outer = Observable.interval(1000).take(2);
-    //
-    // var source = outer.flatMap(function (x, y) {
-    //   console.log('outer');
-    //   return Observable.interval(500).take(3).map(y => `${x}:${y}`)
-    // });
-
-    // source.subscribe(d => console.log(d));
-    this.workk();
-
-  }
-
-  async workk(){
-    console.log('test');
-    await setTimeout(()=>{console.log('await')}, 4000);
-    console.log('test');
   }
 
   public login() {
     this.loginService.signIn(this.email, this.passwd)
       .subscribe((user) => {
         this.user = user.email;
+        this.router.navigate(['home']);
       });
   }
 

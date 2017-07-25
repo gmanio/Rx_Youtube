@@ -1,0 +1,22 @@
+
+{
+  "name": "Rx",
+  "short_name": "Rx",
+  "theme_color": "#FFFFFF",
+  "background_color": "#3F51B5",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "assets/rx.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/rx.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

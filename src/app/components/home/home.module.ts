@@ -8,8 +8,8 @@ import { RouterGuardService } from "../../services/router-guard.service";
 import { ArchiveComponent } from "./archive/archive.component";
 import { SharedModule } from "../shared/shared.module";
 import { YoutubeComponent } from "./youtube/youtube.component";
-import { LoginComponent } from "../login/login.component";
 import { FormsModule } from "@angular/forms";
+import { PlayerComponent } from "../player/player.component";
 
 @NgModule({
   imports: [
@@ -22,7 +22,8 @@ import { FormsModule } from "@angular/forms";
     MenuComponent,
     HomeComponent,
     ArchiveComponent,
-    YoutubeComponent
+    YoutubeComponent,
+    PlayerComponent
   ],
   providers: [
     YoutubeService,
