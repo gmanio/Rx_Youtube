@@ -24,28 +24,6 @@ table caption, legend, figcaption { position: absolute; left: -10000px; height: 
 .hide, .blind { display: none }
 .clfix:after { content: ""; display: block; height: 0; clear: both; visibility: hidden; }
 * { -webkit-tap-highlight-color: rgba(0, 0, 0, 0); -webkit-appearance: none; -webkit-focus-ring-color: rgba(0, 0, 0, 0); resize: none; outline: 0; }
-/* Material Icon */
-@font-face {
-  font-family: 'Material Icons';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Material Icons'), local('MaterialIcons-Regular'), url('vendor/material/v22_material_icon.woff2') format('woff2');
-}
-.material-icons {
-  font-family: 'Material Icons';
-  font-weight: normal;
-  font-style: normal;
-  line-height: 1;
-  letter-spacing: normal;
-  text-transform: none;
-  display: inline-block;
-  white-space: nowrap;
-  word-wrap: normal;
-  direction: ltr;
-  -webkit-font-feature-settings: 'liga';
-  -webkit-font-smoothing: antialiased;
-}
-
 
 .border-loading-indicator {
   position: absolute;
